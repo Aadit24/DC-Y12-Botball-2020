@@ -4,24 +4,34 @@
 
 void run()
 {
+//    unfoldArm();
+//    msleep(5000);
+
     //Charge at Larry
-    spinRightAngle(250, 47);
-    moveForwardDistance(450, 1000);
-    while (analog(IR_PORT) < 500)
+    //openClaw();
+    spinLeftAngle(100, 46);
+    moveForwardDistance(300, 800);
+    while (get_create_rbump() == 0)
     {
-        moveForward(200);
+        moveForward(150);
     }
     moveStop();
-
-    //Come back to Communication Orb Zone
-    spinLeftAngle(250, 182);
-    moveForwardDistance(450, 800);
-    spinRightAngle(250, 47);
-    moveForwardDistance(250, 500);
-
+    //closeClaw();
+    //Come back to Communication Orb Zone and drop BotGuy
+    moveBackwardDistance(200,600);
+    motor(MOTOR_1_PORT, -50);
+    msleep(2500);
+    motor(MOTOR_1_PORT, 0);
+    set_servo_position(ARM_PORT, 180);
+    spinLeftAngle(100, 90);
+    //openClaw()
+    moveBackwardDistance(100,100);
+    msleep(1000);
+    spinLeftAngle(100, 40);
+	/*
     //Shove Ore Boxes to Storage
     //Do ore box stuff
-
+	
     //Pick up Communication Orb
     openClaw();
     lowerArmBottom();
@@ -47,5 +57,5 @@ void run()
     moveStop();
 
     //Pull up Minecart with second crane
-    //Mechanics TBD
+    //Mechanics TBD*/
 }
